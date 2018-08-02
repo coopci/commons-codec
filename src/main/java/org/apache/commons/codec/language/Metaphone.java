@@ -91,11 +91,12 @@ public class Metaphone implements StringEncoder {
      */
     public String metaphone(final String txt) {
         boolean hard = false;
-        if (txt == null || txt.length() == 0) {
+        int txtLength;
+        if (txt == null || (txtLength = txt.length()) == 0) {
             return "";
         }
         // single character is itself
-        if (txt.length() == 1) {
+        if (txtLength == 1) {
             return txt.toUpperCase(java.util.Locale.ENGLISH);
         }
 
@@ -407,8 +408,8 @@ public class Metaphone implements StringEncoder {
      *
      * @param str1 First of two strings to compare
      * @param str2 Second of two strings to compare
-     * @return {@code true} if the metaphones of these strings are identical,
-     *        {@code false} otherwise.
+     * @return <code>true</code> if the metaphones of these strings are identical,
+     *        <code>false</code> otherwise.
      */
     public boolean isMetaphoneEqual(final String str1, final String str2) {
         return metaphone(str1).equals(metaphone(str2));

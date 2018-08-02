@@ -31,6 +31,10 @@ import java.io.OutputStream;
  * Since this class operates directly on byte streams, and not character streams, it is hard-coded to only encode/decode
  * character encodings which are compatible with the lower 127 ASCII chart (ISO-8859-1, Windows-1252, UTF-8, etc).
  * </p>
+ * <p>
+ * <b>Note:</b> It is mandatory to close the stream after the last byte has been written to it, otherwise the
+ * final padding will be omitted and the resulting data will be incomplete/inconsistent.
+ * </p>
  *
  * @version $Id$
  * @see <a href="http://www.ietf.org/rfc/rfc4648.txt">RFC 4648</a>
@@ -71,11 +75,11 @@ public class Base32OutputStream extends BaseNCodecOutputStream {
      *            true if we should encode all data written to us, false if we should decode.
      * @param lineLength
      *            If doEncode is true, each line of encoded data will contain lineLength characters (rounded down to
-     *            nearest multiple of 4). If lineLength <=0, the encoded data is not divided into lines. If doEncode is
-     *            false, lineLength is ignored.
+     *            nearest multiple of 4). If lineLength &lt;= 0, the encoded data is not divided into lines. If doEncode
+     *            is false, lineLength is ignored.
      * @param lineSeparator
      *            If doEncode is true, each line of encoded data will be terminated with this byte sequence (e.g. \r\n).
-     *            If lineLength <= 0, the lineSeparator is not used. If doEncode is false lineSeparator is ignored.
+     *            If lineLength &lt;= 0, the lineSeparator is not used. If doEncode is false lineSeparator is ignored.
      */
     public Base32OutputStream(final OutputStream out, final boolean doEncode,
                               final int lineLength, final byte[] lineSeparator) {

@@ -1025,6 +1025,11 @@ public class DoubleMetaphoneTest extends StringEncoderAbstractTest<DoubleMetapho
         assertEquals(expected, this.getStringEncoder().doubleMetaphone(source, true));
     }
 
+    @Override
+    protected DoubleMetaphone createStringEncoder() {
+        return new DoubleMetaphone();
+    }
+
     public void doubleMetaphoneEqualTest(final String[][] pairs, final boolean useAlternate) {
         this.validateFixture(pairs);
         for (final String[] pair : pairs) {
@@ -1050,10 +1055,20 @@ public class DoubleMetaphoneTest extends StringEncoderAbstractTest<DoubleMetapho
         }
     }
 
-    @Override
-    protected DoubleMetaphone createStringEncoder() {
-        return new DoubleMetaphone();
+    @Test
+    public void testCCedilla() {
+        assertTrue(this.getStringEncoder().isDoubleMetaphoneEqual("\u00e7", "S")); // c-cedilla
     }
+
+    @Test
+    public void testCodec184() throws Throwable {
+        assertTrue(new DoubleMetaphone().isDoubleMetaphoneEqual("", "", false));
+        assertTrue(new DoubleMetaphone().isDoubleMetaphoneEqual("", "", true));
+        assertFalse(new DoubleMetaphone().isDoubleMetaphoneEqual("aa", "", false));
+        assertFalse(new DoubleMetaphone().isDoubleMetaphoneEqual("aa", "", true));
+        assertFalse(new DoubleMetaphone().isDoubleMetaphoneEqual("", "aa", false));
+        assertFalse(new DoubleMetaphone().isDoubleMetaphoneEqual("", "aa", true));
+      }
 
     @Test
     public void testDoubleMetaphone() {
@@ -1104,30 +1119,11 @@ public class DoubleMetaphoneTest extends StringEncoderAbstractTest<DoubleMetapho
         assertEquals(null, this.getStringEncoder().doubleMetaphone("\t\n\r "));
     }
 
-    /**
-     * Test setting maximum length
-     */
-    @Test
-    public void testSetMaxCodeLength() {
-        final String value = "jumped";
-
-        final DoubleMetaphone doubleMetaphone = new DoubleMetaphone();
-
-        // Sanity check of default settings
-        assertEquals("Default Max Code Length", 4, doubleMetaphone.getMaxCodeLen());
-        assertEquals("Default Primary",   "JMPT", doubleMetaphone.doubleMetaphone(value, false));
-        assertEquals("Default Alternate", "AMPT", doubleMetaphone.doubleMetaphone(value, true));
-
-        // Check setting Max Code Length
-        doubleMetaphone.setMaxCodeLen(3);
-        assertEquals("Set Max Code Length", 3, doubleMetaphone.getMaxCodeLen());
-        assertEquals("Max=3 Primary",   "JMP", doubleMetaphone.doubleMetaphone(value, false));
-        assertEquals("Max=3 Alternate", "AMP", doubleMetaphone.doubleMetaphone(value, true));
-    }
-
     @Test
     public void testIsDoubleMetaphoneEqualBasic() {
-        final String[][] testFixture = new String[][] { { "Case", "case" }, {
+        final String[][] testFixture = new String[][] { {
+                "", "" }, {
+                "Case", "case" }, {
                 "CASE", "Case" }, {
                 "caSe", "cAsE" }, {
                 "cookie", "quick" }, {
@@ -1217,13 +1213,29 @@ public class DoubleMetaphoneTest extends StringEncoderAbstractTest<DoubleMetapho
     }
 
     @Test
-    public void testCCedilla() {
-        assertTrue(this.getStringEncoder().isDoubleMetaphoneEqual("\u00e7", "S")); // c-cedilla
-    }
-
-    @Test
     public void testNTilde() {
         assertTrue(this.getStringEncoder().isDoubleMetaphoneEqual("\u00f1", "N")); // n-tilde
+    }
+
+    /**
+     * Test setting maximum length
+     */
+    @Test
+    public void testSetMaxCodeLength() {
+        final String value = "jumped";
+
+        final DoubleMetaphone doubleMetaphone = new DoubleMetaphone();
+
+        // Sanity check of default settings
+        assertEquals("Default Max Code Length", 4, doubleMetaphone.getMaxCodeLen());
+        assertEquals("Default Primary",   "JMPT", doubleMetaphone.doubleMetaphone(value, false));
+        assertEquals("Default Alternate", "AMPT", doubleMetaphone.doubleMetaphone(value, true));
+
+        // Check setting Max Code Length
+        doubleMetaphone.setMaxCodeLen(3);
+        assertEquals("Set Max Code Length", 3, doubleMetaphone.getMaxCodeLen());
+        assertEquals("Max=3 Primary",   "JMP", doubleMetaphone.doubleMetaphone(value, false));
+        assertEquals("Max=3 Alternate", "AMP", doubleMetaphone.doubleMetaphone(value, true));
     }
 
     public void validateFixture(final String[][] pairs) {

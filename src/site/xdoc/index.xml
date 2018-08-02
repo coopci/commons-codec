@@ -68,12 +68,14 @@ An overview of the functionality is provided in the
 Various <a href="project-reports.html">project reports</a> are also available.
 </p>
 <p>
-The JavaDoc API documents are available online:
+The Javadoc API documents are available online:
 </p>
 <ul>
-<li>The <a href="api-release/index.html">current release</a></li>
-<!--li>The <a href="api-1.1/index.html">previous version 1.1</a></li-->
-<li>The <a href="apidocs/index.html">latest SVN</a></li>
+  <li><a href="apidocs/index.html">Javadoc trunk</a></li>            
+  <li><a href="archives/1.10/apidocs/index.html">Javadoc 1.10</a></li>
+  <li><a href="archives/1.9/apidocs/index.html">Javadoc 1.9</a></li>
+  <li><a href="archives/1.8/apidocs/index.html">Javadoc 1.8</a></li>
+  <li><a href="archives/1.7/apidocs/index.html">Javadoc 1.7</a></li>
 </ul>
 <p>
 The <a href="source-repository.html">subversion repository</a> can be
@@ -83,12 +85,13 @@ The <a href="source-repository.html">subversion repository</a> can be
 <!-- ================================================== -->
 <section name="Releases">
 <ul>
-<li><a href="archives/1.9/index.html">Codec 1.9</a> requires Java 1.6</li>
-<li><a href="archives/1.8/index.html">Codec 1.8</a> requires Java 1.6</li>
-<li><a href="archives/1.7/index.html">Codec 1.7</a> requires Java 1.6</li>
-<li>Codec 1.6 requires Java 1.5</li>
-<li>Codec 1.5 requires Java 1.4</li>
-<li>Codec 1.4 requires Java 1.4</li>
+  <li><a href="http://commons.apache.org/codec/download_codec.cgi">Codec 1.10 (mirrors)</a> requires Java 1.6</li>
+  <li><a href="http://archive.apache.org/dist/commons/codec/">Codec 1.9 (archives)</a> requires Java 1.6</li>
+  <li><a href="http://archive.apache.org/dist/commons/codec/">Codec 1.8 (archives)</a> requires Java 1.6</li>
+  <li><a href="http://archive.apache.org/dist/commons/codec/">Codec 1.7 (archives)</a> requires Java 1.6</li>
+  <li><a href="http://archive.apache.org/dist/commons/codec/">Codec 1.6 (archives)</a> requires Java 1.5</li>
+  <li><a href="http://archive.apache.org/dist/commons/codec/">Codec 1.5 (archives)</a> requires Java 1.4</li>
+  <li><a href="http://archive.apache.org/dist/commons/codec/">Codec 1.4 (archives)</a> requires Java 1.4</li>
 </ul>
 <p>
 See the

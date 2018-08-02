@@ -37,12 +37,12 @@ public class PhoneticEngineTest {
 
     private static final Integer TEN = Integer.valueOf(10);
 
-    @Parameterized.Parameters
+    @Parameterized.Parameters(name = "{0}-{1}-{2}-{3}")
     public static List<Object[]> data() {
         return Arrays
                 .asList(new Object[] { "Renault", "rinD|rinDlt|rina|rinalt|rino|rinolt|rinu|rinult", NameType.GENERIC, RuleType.APPROX, Boolean.TRUE, TEN },
-                        new Object[] { "Renault", "rYnDlt|rYnalt|rYnult|rinDlt|rinalt|rinult", NameType.ASHKENAZI, RuleType.APPROX, Boolean.TRUE, TEN },
-                        new Object[] { "Renault", "rYnDlt", NameType.ASHKENAZI, RuleType.APPROX, Boolean.TRUE, Integer.valueOf(1) },
+                        new Object[] { "Renault", "rYnDlt|rYnalt|rYnult|rinDlt|rinalt|rinolt|rinult", NameType.ASHKENAZI, RuleType.APPROX, Boolean.TRUE, TEN },
+                        new Object[] { "Renault", "rinDlt", NameType.ASHKENAZI, RuleType.APPROX, Boolean.TRUE, Integer.valueOf(1) },
                         new Object[] { "Renault", "rinDlt", NameType.SEPHARDIC, RuleType.APPROX, Boolean.TRUE, TEN },
                         new Object[] { "SntJohn-Smith", "sntjonsmit", NameType.GENERIC, RuleType.EXACT, Boolean.TRUE, TEN },
                         new Object[] { "d'ortley", "(ortlaj|ortlej)-(dortlaj|dortlej)", NameType.GENERIC, RuleType.EXACT, Boolean.TRUE, TEN },
@@ -51,7 +51,13 @@ public class PhoneticEngineTest {
                                 "(elSink|elsink|helSink|helsink|helzink|xelsink)-(banhelsink|fanhelsink|fanhelzink|vanhelsink|vanhelzink|vanjelsink)",
                                 NameType.GENERIC,
                                 RuleType.EXACT,
-                                Boolean.FALSE, TEN });
+                                Boolean.FALSE, TEN },
+                        new Object[] {
+                                "Judenburg",
+                                "iudnbYrk|iudnbirk|iudnburk|xudnbirk|xudnburk|zudnbirk|zudnburk",
+                                NameType.GENERIC,
+                                RuleType.APPROX,
+                                Boolean.TRUE, TEN });
     }
 
     private final boolean concat;

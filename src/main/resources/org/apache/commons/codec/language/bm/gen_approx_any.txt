@@ -29,6 +29,12 @@
 "mp" "" "" "(mp|b[greeklatin])"
 "ng" "" "" "(ng|g[greeklatin])"
 
+"B" "" "[fktSs]" "(p|f[spanish])" 
+"B" "" "p" "" 
+"B" "" "$" "(p|f[spanish])" 
+"V" "" "[pktSs]" "(f|p[spanish])" 
+"V" "" "f" "" 
+"V" "" "$" "(f|p[spanish])" 
 "B" "" "" "(b|v[spanish])"
 "V" "" "" "(v|b[spanish])"
     
@@ -41,7 +47,7 @@
 "s" "" "$" "(s|[french])"
 "t" "[aeiouAEIOU]" "[^aeiouAEIOU]" "(t|[french])" // Petitjean
 "s" "[aeiouAEIOU]" "[^aeiouAEIOU]" "(s|[french])" // Groslot, Grosleau
-    //array("p" "[aeiouAEIOU]" "[^aeiouAEIOU]" "(p|[$french])" 
+    //array("p" "[aeiouAEIOU]" "[^aeiouAEIOU]" "(p|[french])" 
     
 "I" "[aeiouAEIBFOUQY]" "" "i"
 "I" "" "[^aeiouAEBFIOU]e" "(Q[german]|i|D[english])"  // "line"
@@ -58,6 +64,7 @@
 "lE" "[bdfgkmnprsStvzZ]" "" "(li|il[english]|lY[german])"  // Applebaum < Appelbaum
 "rE" "[bdfgkmnprsStvzZ]" "" "(ri|ir[english]|rY[german])"
     
+"EE" "" "" "(i|)" 
 "ea" "" "" "(D|a|i)"
     
 "au" "" "" "(D|a|u)"
@@ -86,7 +93,7 @@
 "E" "" "$" "i"
 "E" "[DaoiuAOIUQY]" "" "i"
 "E" "" "[aoAOQY]" "i"
-"E" "" "" "(i|Y[$german])"
+"E" "" "" "(i|Y[german])"
         
 "P" "" "" "(o|u)" 
     
@@ -94,14 +101,14 @@
 "O" "" "ts$" "o"
 "O" "" "$" "o"
 "O" "[oeiuQY]" "" "o"
-"O" "" "" "(o|Y[$german])"
+"O" "" "" "(o|Y[german])"
 "O" "" "" "o"
     
 "A" "" "[fklmnprst]$" "(a|o)"
 "A" "" "ts$" "(a|o)"
 "A" "" "$" "(a|o)"
 "A" "[oeiuQY]" "" "(a|o)"
-"A" "" "" "(a|o|Y[$german])"
+"A" "" "" "(a|o|Y[german])"
 "A" "" "" "(a|o)"
 
 "U" "" "$" "u"
